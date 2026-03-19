@@ -27,7 +27,7 @@ const Contact = () => {
       setDisabled(true);
        toast.warn("wait for some moment.....message was sending....")
       try{ 
-       const res =await axios.post("http://localhost:9095/contact",data);
+       const res =await axios.post("/contact",data);
         handleReset();
       toast.success(res.data.concat(" please check your email....."))
       }
