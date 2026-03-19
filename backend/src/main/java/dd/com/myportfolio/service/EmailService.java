@@ -10,29 +10,28 @@ import jakarta.mail.internet.MimeMessage;
 @Service
 public class EmailService {
 
-@Autowired
-JavaMailSender mailSender;
+    @Autowired
+    JavaMailSender mailSender;
 
-public void sendHtmlEmail(String to,String subject,String body){
+    public void sendHtmlEmail(String to, String subject, String body) {
 
-try{
+        try {
 
-MimeMessage message = mailSender.createMimeMessage();
+            MimeMessage message = mailSender.createMimeMessage();
 
-MimeMessageHelper helper =
-new MimeMessageHelper(message,true);
+            MimeMessageHelper helper =
+                    new MimeMessageHelper(message, true);
 
-helper.setTo(to);
-helper.setSubject(subject);
-helper.setText(body,true);
+            helper.setFrom("dhineshsundhararasu@gmail.com");
 
-mailSender.send(message);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(body, true);
 
-}
-catch(Exception e){
-e.printStackTrace();
-}
+            mailSender.send(message);
 
-}
-
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
